@@ -3,6 +3,10 @@
 # include this file after the rule "all:"
 #
 
+sha1sum := $(shell which sha1sum 2>/dev/null || which gsha1sum 2>/dev/null)
+sha256sum := $(shell which sha256sum 2>/dev/null || which gsha256sum 2>/dev/null)
+md5sum := $(shell which md5sum 2>/dev/null || which gmd5sum 2>/dev/null || which md5 2>/dev/null)
+
 $(DIGESTS_FILE): download
 	@$(MSG) "Generating digests for $(NAME)"
 	@rm -f $@ && touch -f $@
