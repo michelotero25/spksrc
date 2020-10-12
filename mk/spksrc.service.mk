@@ -149,18 +149,6 @@ ifneq ($(strip $(SPK_COMMANDS) $(SPK_LINKS)),)
 endif
 else
 
-SPK_COMMANDS_IN_JSON = $(shell echo ${SPK_COMMANDS} | jq -Rc '. | split(" ")')
-$(DSM_CONF_DIR)/resource:
-	$(create_target_dir)
-	@echo '{}' > $@
-ifneq ($(strip $(SPK_COMMANDS)),)
-	@jq --argjson binaries '$(SPK_COMMANDS_IN_JSON)' \
-		'."usr-local-linker" = {"bin": $$binaries}' $@ 1<>$@
-endif
-ifneq ($(strip $(SERVICE_WIZARD_SHARE)),)
-	@jq --arg share "{{${SERVICE_WIZARD_SHARE}}}" --arg user sc-${SPK_USER} \
-		'."data-share" = {"shares": [{"name": $$share, "permission":{"rw":[$$user]}} ] }' $@ 1<>$@
-endif
 SERVICE_FILES += $(DSM_CONF_DIR)/resource
 # STARTABLE needs to be yes, the resource linking and unlinking works on start and stop
 # see spsrc.spk.mk
