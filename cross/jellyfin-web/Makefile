@@ -21,7 +21,9 @@ INSTALL_TARGET = nop
 
 include ../../mk/spksrc.cross-dotnet.mk
 
+ENV += NPM_CONFIG_USER=root
+
 jellyfin_compile_target:
 	mkdir -p $(STAGING_INSTALL_PREFIX)/web
-	$(RUN) $(NPM) install && $(NPM) run build:production
+	$(RUN) npm install && npm run build:production
 	cp -R $(WORK_DIR)/$(PKG_NAME)-$(PKG_VERS)/dist/* $(STAGING_INSTALL_PREFIX)/web

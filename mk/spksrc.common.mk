@@ -20,7 +20,6 @@ PIP_CACHE_OPT ?= --cache-dir $(PIP_DIR)
 PIP_WHEEL_ARGS = wheel --no-binary :all: $(PIP_CACHE_OPT) --no-deps --requirement $(WORK_DIR)/wheelhouse/requirements.txt --wheel-dir $(WORK_DIR)/wheelhouse
 PIP_WHEEL = $(PIP) $(PIP_WHEEL_ARGS)
 
-NPM = $(WORK_DIR)/../../../native/nodejs/work-native/node/bin/npm
 PATH := $(WORK_DIR)/../../../native/nodejs/work-native/node/bin:$(PATH)
 
 # Available languages
