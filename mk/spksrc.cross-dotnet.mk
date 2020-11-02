@@ -36,10 +36,13 @@ include ../../mk/spksrc.cross-dotnet-env.mk
 
 # avoid run of make configure & make install
 CONFIGURE_TARGET = nop
-INSTALL_TARGET = nop
 
 ifeq ($(strip $(COMPILE_TARGET)),)
 COMPILE_TARGET = dotnet_compile_target
+endif
+
+ifeq ($(strip $(INSTALL_TARGET)),)
+INSTALL_TARGET = nop
 endif
 
 # default dotnet publish:
