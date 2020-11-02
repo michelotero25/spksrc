@@ -62,7 +62,7 @@ ifeq ($(strip $(DOTNET_SMALL)),1)
 # PublishTrimmed reduce the size of apps by analyzing IL and trimming unused assemblies.
 #   (not aware of reflection, needs testing, shaves ~10mb of binary)
 # self-contained include .NET Runtime
-	DOTNET_BUILD_ARGS += "-p:GenerateDocumentationFile=false;DebugSymbols=false;DebugType=none;UseAppHost=true;PublishSingleFile=true;PublishReadyToRun=true;PublishReadyToRunShowWarnings=true"
+	DOTNET_BUILD_ARGS += "-p:UseAppHost=true;PublishSingleFile=true;PublishReadyToRun=true;PublishReadyToRunShowWarnings=true"
 endif
 
 # https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet#environment-variables

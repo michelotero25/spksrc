@@ -87,11 +87,6 @@ plist: install
 include ../../mk/spksrc.plist.mk
 
 
-### Clean rules
-smart-clean:
-	rm -rf $(EXTRACT_PATH)/
-	rm -f $(WORK_DIR)/.$(COOKIE_PREFIX)*
-
 clean:
 	rm -fr work work-*
 
