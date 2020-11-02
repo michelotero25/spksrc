@@ -21,6 +21,7 @@ PIP_WHEEL_ARGS = wheel --no-binary :all: $(PIP_CACHE_OPT) --no-deps --requiremen
 PIP_WHEEL = $(PIP) $(PIP_WHEEL_ARGS)
 
 NPM = $(WORK_DIR)/../../../native/nodejs/work-native/node/bin/npm
+PATH := $(WORK_DIR)/../../../native/nodejs/work-native/node/bin:$(PATH)
 
 # Available languages
 LANGUAGES = chs cht csy dan enu fre ger hun ita jpn krn nld nor plk ptb ptg rus spn sve trk
