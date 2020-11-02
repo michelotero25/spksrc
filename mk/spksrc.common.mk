@@ -20,6 +20,8 @@ PIP_CACHE_OPT ?= --cache-dir $(PIP_DIR)
 PIP_WHEEL_ARGS = wheel --no-binary :all: $(PIP_CACHE_OPT) --no-deps --requirement $(WORK_DIR)/wheelhouse/requirements.txt --wheel-dir $(WORK_DIR)/wheelhouse
 PIP_WHEEL = $(PIP) $(PIP_WHEEL_ARGS)
 
+NPM = $(WORK_DIR)/../../../native/nodejs/work-native/install/usr/local/bin/npm
+
 # Available languages
 LANGUAGES = chs cht csy dan enu fre ger hun ita jpn krn nld nor plk ptb ptg rus spn sve trk
 

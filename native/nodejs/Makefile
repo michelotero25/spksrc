@@ -20,6 +20,9 @@ include ../../mk/spksrc.native-cc.mk
 
 .PHONY: nodejs-install
 nodejs-install:
-	cp -r $(WORK_DIR)/$(PKG_DIR)/bin/. $(INSTALL_PREFIX)/bin/
-	cp -r $(WORK_DIR)/$(PKG_DIR)/lib/. $(INSTALL_PREFIX)/lib/
-	cp -r $(WORK_DIR)/$(PKG_DIR)/include/. $(INSTALL_PREFIX)/include/
+	install -m 755 -d $(STAGING_INSTALL_PREFIX)/bin
+	install -m 755 -d $(STAGING_INSTALL_PREFIX)/lib
+	install -m 755 -d $(STAGING_INSTALL_PREFIX)/include
+	install -m 755 $(WORK_DIR)/$(PKG_DIR)/bin/* $(STAGING_INSTALL_PREFIX)/bin/
+	cp -r $(WORK_DIR)/$(PKG_DIR)/lib/. $(STAGING_INSTALL_PREFIX)/lib/
+	cp -r $(WORK_DIR)/$(PKG_DIR)/include/. $(STAGING_INSTALL_PREFIX)/include/
