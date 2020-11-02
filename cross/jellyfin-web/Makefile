@@ -1,0 +1,27 @@
+PKG_NAME = jellyfin-web
+PKG_VERS = 10.6.4
+PKG_EXT = tar.gz
+PKG_DIST_NAME = v$(PKG_VERS).$(PKG_EXT)
+PKG_DIST_SITE = https://github.com/jellyfin/jellyfin-web/archive
+PKG_DIST_FILE = $(PKG_NAME)-$(PKG_VERS).$(PKG_EXT)
+PKG_DIR = $(PKG_NAME)-$(PKG_VERS)
+
+HOMEPAGE = https://jellyfin.org
+COMMENT  = Jellyfin Web is the frontend used for most of the clients available for end users
+LICENSE  = GPLv2
+
+.PHONY: jellyfin_compile_target
+BUILD_DEPENDS = native/nodejs
+
+
+CONFIGURE_TARGET = nop
+COMPILE_TARGET = jellyfin_compile_target
+INSTALL_TARGET = nop
+
+
+include ../../mk/spksrc.cross-dotnet.mk
+
+jellyfin_compile_target:
+	mkdir -p $(STAGING_INSTALL_PREFIX)/web
+	$(RUN) $(NPM) install && $(NPM) run build:production
+	cp -R $(WORK_DIR)/$(PKG_NAME)-$(PKG_VERS)/dist/* $(STAGING_INSTALL_PREFIX)/web
