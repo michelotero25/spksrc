@@ -17,7 +17,6 @@ CONFIGURE_TARGET = nop
 COMPILE_TARGET = nop
 INSTALL_TARGET = dotnet-install
 
-# DOTNET_ROOT=$(WORK_DIR)/dotnet/
 DOTNET_PACKAGES=$(DISTRIB_DIR)/nuget/packages
 
 include ../../mk/spksrc.native-cc.mk
@@ -25,4 +24,3 @@ include ../../mk/spksrc.native-cc.mk
 .PHONY: dotnet-install
 dotnet-install:
 	mkdir -p $(DOTNET_PACKAGES)
-# 	$(RUN) cp -r ./* $(DOTNET_ROOT)/
