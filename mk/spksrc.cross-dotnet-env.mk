@@ -1,8 +1,11 @@
 # Configuration for dotnet build
 # 
 
+# NOTE: 32bit (x86) is not supported:
+# https://github.com/dotnet/core/issues/5403
+# https://github.com/dotnet/core/issues/4595
 GENERIC_ARCHS = ARM7
-UNSUPPORTED_ARCHS += $(PPC_ARCHES) $(ARM5_ARCHES)
+UNSUPPORTED_ARCHS += $(PPC_ARCHES) $(ARM5_ARCHES) $(x86_ARCHES)
 
 DOTNET_OS = linux
 
@@ -32,7 +35,7 @@ endif
 ifeq ($(strip $(DOTNET_ROOT_X86)),)
 	# dotnet sdk-32bit
 	DOTNET_ROOT_X86=""
-# 	DOTNET_ROOT_X86=$(WORK_DIR)/../../../native/dotnet-sdk-x64/work-native
+# 	DOTNET_ROOT_X86=$(WORK_DIR)/../../../native/dotnet-x86-sdk/work-native
 endif
 
 
