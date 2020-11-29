@@ -9,6 +9,12 @@ UNSUPPORTED_ARCHS += $(PPC_ARCHES) $(ARM5_ARCHES) $(x86_ARCHES)
 
 DOTNET_OS = linux
 
+
+ifeq ($(strip $(FRAMEWORK)),)
+	FRAMEWORK=netcoreapp3.1
+endif
+DOTNET_BUILD_ARGS += -f $(FRAMEWORK)
+
 # Define DOTNET_ARCH for compiler
 ifeq ($(findstring $(ARCH),$(ARM7_ARCHES)),$(ARCH))
 	DOTNET_ARCH = arm
@@ -56,7 +62,6 @@ DOTNET_BUILD_ARGS += --runtime $(DOTNET_OS)-$(DOTNET_ARCH)
 
 DOTNET_BUILD_ARGS += --output="$(STAGING_INSTALL_PREFIX)"
 
-
 ifeq ($(strip $(DOTNET_SMALL)),1)
 # PublishSingleFile better for packaging than multiple small dlls
 # PublishReadyToRun improve the startup time of your .NET Core application
@@ -67,6 +72,8 @@ ifeq ($(strip $(DOTNET_SMALL)),1)
 # self-contained include .NET Runtime
 	DOTNET_BUILD_ARGS += "-p:UseAppHost=true;PublishSingleFile=true;PublishReadyToRun=true;PublishReadyToRunShowWarnings=true"
 endif
+
+DOTNET_BUILD_ARGS += $(DOTNET_BUILD_PROPERTIES)
 
 # https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet#environment-variables
 # https://github.com/dotnet/docs/blob/master/docs/core/tools/dotnet.md#environment-variables
