@@ -51,16 +51,21 @@ ifeq ($(strip $(NUGET_PACKAGES)),)
 	NUGET_PACKAGES=$(DISTRIB_DIR)/nuget/packages
 endif
 
-ifeq ($(strip $(DOTNET_RELEASE)),)
-DOTNET_BUILD_ARGS += --configuration Release
-endif
-ifeq ($(strip $(DOTNET_SELF_CONTAINED)),1)
+# ifeq ($(strip $(DOTNET_NOT_RELEASE)),)
+	DOTNET_BUILD_ARGS += --configuration Release
+# endif
+ifdef ($(strip $(DOTNET_SELF_CONTAINED)),1)
+	# https://docs.microsoft.com/en-us/dotnet/core/deploying/#publish-self-contained
 	DOTNET_BUILD_ARGS += --self-contained
+endif
+
+ifdef ($(strip $(DOTNET_SINGEL_FILE)),1)
+	DOTNET_BUILD_PROPERTIES += "-p:PublishSingleFile=true"
 endif
 
 DOTNET_BUILD_ARGS += --runtime $(DOTNET_OS)-$(DOTNET_ARCH)
 
-DOTNET_BUILD_ARGS += --output="$(STAGING_INSTALL_PREFIX)"
+DOTNET_BUILD_ARGS += --output="$(STAGING_INSTALL_PREFIX)/$(DOTNET_OUTPUT_PATH)"
 
 ifeq ($(strip $(DOTNET_SMALL)),1)
 # PublishSingleFile better for packaging than multiple small dlls
@@ -70,7 +75,7 @@ ifeq ($(strip $(DOTNET_SMALL)),1)
 # PublishTrimmed reduce the size of apps by analyzing IL and trimming unused assemblies.
 #   (not aware of reflection, needs testing, shaves ~10mb of binary)
 # self-contained include .NET Runtime
-	DOTNET_BUILD_ARGS += "-p:UseAppHost=true;PublishSingleFile=true;PublishReadyToRun=true;PublishReadyToRunShowWarnings=true"
+	DOTNET_BUILD_PROPERTIES += "-p:UseAppHost=true;PublishReadyToRun=true;PublishReadyToRunShowWarnings=true"
 endif
 
 DOTNET_BUILD_ARGS += $(DOTNET_BUILD_PROPERTIES)

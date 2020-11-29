@@ -13,9 +13,8 @@ COMMENT  = Jackett works as a proxy server: it translates queries from apps into
 LICENSE  = GNU GPL v2
 
 DOTNET_SMALL = 1
-DOTNET_SELF_CONTAINED = 1
 DOTNET_PACKAGE_NAME = Jackett.Server
-
+DOTNET_OUTPUT_PATH = share
 SET_VERSION = /p:AssemblyVersion=$(PKG_VERS) /p:FileVersion=$(PKG_VERS) /p:InformationalVersion=$(PKG_VERS) /p:Version=$(PKG_VERS)
 DOTNET_BUILD_PROPERTIES += $(SET_VERSION)
 

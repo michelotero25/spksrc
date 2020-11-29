@@ -6,7 +6,7 @@ service_prestart ()
 {
     # Replace generic service startup
     PATH="${SYNOPKG_PKGDEST}/bin:${PATH}"
-    JACKETT="${SYNOPKG_PKGDEST}/jackett"
+    JACKETT="${SYNOPKG_PKGDEST}/share/jackett"
     HOME_DIR="${SYNOPKG_PKGDEST}/var"
 
     echo "Starting Jackett as user ${EFF_USER}" >> ${LOG_FILE}
