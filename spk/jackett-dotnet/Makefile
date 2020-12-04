@@ -1,17 +1,17 @@
 SPK_NAME = jackett-dotnet
-SPK_VERS = 0.16.1583
-SPK_REV = 11
+SPK_VERS = 0.16.2294
+SPK_REV = 12
 SPK_ICON = src/jackett.png
 DSM_UI_DIR = app
 
 DEPENDS = cross/$(SPK_NAME)
 
-MAINTAINER = m4tt075
+MAINTAINER = SynoCommunity
 DESCRIPTION = "Jackett works as a proxy server. It translates queries from apps into tracker-site-specific http queries, parses the html response, then sends results back to the requesting software. Jackett is a single repository of maintained indexer scraping and translation logic - removing the burden from other apps."
 RELOAD_UI = yes
 DISPLAY_NAME = Jackett
 STARTABLE = yes
-CHANGELOG = "Compile using .NET"
+CHANGELOG = "Compile using .NET Core"
 HOMEPAGE = https://github.com/Jackett/Jackett
 LICENSE = GPLv2
 
