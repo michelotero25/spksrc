@@ -54,13 +54,13 @@ endif
 ifneq ($(strip $(DOTNET_NOT_RELEASE)),1)
 	DOTNET_BUILD_ARGS += --configuration Release
 endif
-ifndef ($(strip $(DOTNET_SHARED_FRAMEWORK)),1)
+ifneq ($(strip $(DOTNET_SHARED_FRAMEWORK)),1)
 	# Include .NET Core into package unless DOTNET_SHARED_FRAMEWORK is set to 1
 	# https://docs.microsoft.com/en-us/dotnet/core/deploying/#publish-self-contained
 	DOTNET_BUILD_ARGS += --self-contained
 endif
 
-ifdef ($(strip $(DOTNET_SINGEL_FILE)),1)
+ifeq ($(strip $(DOTNET_SINGLE_FILE)),1)
 	# package all dlls into a single binary
 	DOTNET_BUILD_PROPERTIES += "-p:PublishSingleFile=true"
 endif
