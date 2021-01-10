@@ -19,6 +19,8 @@ LICENSE = GPLv2
 SERVICE_USER = auto
 SERVICE_SETUP = src/service-setup.sh
 
+CONF_DIR = src/conf
+
 # Service configuration
 SERVICE_PORT = 8096
 SERVICE_PORT_TITLE = Jellyfin (HTTP)
