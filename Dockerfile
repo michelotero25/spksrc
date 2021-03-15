@@ -14,6 +14,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 		bison \
 		build-essential \
 		check \
+		clang \
 		cmake \
 		curl \
 		cython \
@@ -31,6 +32,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 		jq \
 		libbz2-dev \
 		libc6-i386 \
+		libclang-dev \
 		libcppunit-dev \
 		libffi-dev \
 		libgc-dev \
@@ -57,9 +59,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 		texinfo \
 		unzip \
 		xmlto \
-		zlib1g-dev \
-		clang \
-		libclang-dev && \
+		zlib1g-dev && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
