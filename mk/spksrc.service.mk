@@ -162,7 +162,9 @@ ifneq ($(strip $(SERVICE_PORT)),)
 	@jq '."port-config"."protocol-file" = "$(DSM_UI_DIR)/$(SPK_NAME).sc"' $@ 1<>$@
 endif
 ifneq ($(strip $(FWPORTS)),)
-	@jq '."port-config"."protocol-file" = "$(DSM_UI_DIR)/$(FWPORTS)"' $@ 1<>$@
+# e.g. FWPORTS=src/foo.sc
+	@jq --arg file $(FWPORTS) \
+		'."port-config"."protocol-file" = "$(DSM_UI_DIR)/"+($$file | split("/")[-1])' $@ 1<>$@
 endif
 ifneq ($(strip $(SPK_COMMANDS)),)
 # e.g. SPK_COMMANDS=bin/foo bin/bar
