@@ -69,7 +69,7 @@ arrow==0.17.0
 attrs==20.3.0
 azure-core==1.13.0
 azure-storage-blob==12.8.1
-b2sdk==1.7.0
+b2sdk==1.14.1
 Babel==2.9.1
 boto==2.49.0
 boto3==1.17.62
