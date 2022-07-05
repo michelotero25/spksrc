@@ -9,5 +9,5 @@ pycryptodomex==3.9.8
 PyYAML==5.3.1
 pyzmq==19.0.2
 requests==2.24.0
-salt==3001.1
+salt==3003.5
 urllib3==1.25.10
