@@ -31,7 +31,7 @@
 
 
 ##### basic requirements #####
-certifi==2020.12.5
+certifi==2022.12.7
 chardet==4.0.0
 fasteners==0.16
 future==0.18.2
